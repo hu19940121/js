@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>轮播图</title>
+    <script src='jquery-1.8.3.min.js'>
+
+    </script>
+    <script>
+
+      $(function() {
+        //设置a的z-index
+        var alllinks=$('#slide-con a');
+        var zNum=30;
+        var now=0; //初始页码
+        var time=null;
+        var num=$('#slide-con a').length;
+        for (var i = 0; i < num; i++) {
+          $('#slide-nav').append('<span></span>')
+        }
+        alllinks.eq(0).css('opacity','1');
+        // for (var i = 0; i < alllinks.length; i++) {
+        //   alllinks.eq(i).css('zIndex',zNum-i);
+        // }
+        alllinks.each(function(i,el) {
+          $(el).css('zIndex',zNum-i)
+          console.log(el);
+        })  //调整图片顺序
+
+
+        timeId = setInterval(function(){
+        play();
+      },1500);
+
+        //鼠标移入轮播图时,清除定时器
+        $('#slide-wrap').hover(function(){
+          clearInterval(timeId); //鼠标移入 关闭自动播放
+        },function(){
+          timeId = setInterval(function(){
+          play();
+        },1500);  //鼠标移出 开启自动播放
+        })
+
+        $('.next-btn').click(function(){
+          play();
+        })
+
+
+        function play(){
+          alllinks.eq(now).animate({
+            opacity:0
+          },500); //当前页消失
+          $('#slide-nav span').eq(now).removeClass('active'); //清除所有激活class
+          now++;
+
+          if (now>=4) {
+            now=0;
+          }  // 当到最后一页的时候，归零
+          $('#slide-nav span').eq(now).addClass('active'); //添加激活class
+          alllinks.eq(now).animate({
+              opacity:1
+          },500);  //下一页出现
+        }
+
+
+        $('.prev-btn').click(function(){
+
+          alllinks.eq(now).animate({
+              opacity:0
+          },500); //当前页消失
+          $('#slide-nav span').eq(now).removeClass('active'); //清除所有激活class
+          now--;
+          if (now<=-1) {
+            now=3;
+          }  // 当到最后一页的时候，归零
+          $('#slide-nav span').eq(now).addClass('active'); //添加激活class
+          alllinks.eq(now).animate({
+              opacity:1
+          },500);  //上一页出现
+        })
+
+        //小导航点击事件
+        $('#slide-nav span').click(function() {
+            var i = $('#slide-nav span').index($(this));
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+            //当前的图片隐藏
+            alllinks.eq(now).animate({
+                opacity:0
+            },500);
+
+            //与点击按钮索引对应的图片显示
+            alllinks.eq(i).animate({
+                opacity:1
+            },500);
+            now=i;
+        })
+      })
+    </script>
+  </head>
+  <style media="screen">
+    #slide-wrap{
+      width: 960px;
+      height: 460px;
+      margin: 0 auto;
+      margin-top: 20px;
+      position: relative;
+    }
+    #slide-con a{
+    display: block;
+    width:960px;
+    height:460px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow:hidden;
+    opacity: 0;
+    }
+    #slide-con a img{width: 100%;
+                    height: 100%;}
+    .next-btn,.prev-btn{display: block;
+                        width: 40px;
+                        height: 68px;
+                        position: absolute;
+                        z-index: 100;
+                        }
+    .next-btn{
+      top: 200px;
+      right: 0;
+      background: url(images/next-btn.png) no-repeat;
+    }
+    .prev-btn{
+      left:0;
+      top: 200px;
+      background: url(images/prev-btn.png) no-repeat;
+    }
+    #slide-nav{
+      z-index: 100;
+      position: absolute;
+      right: 32px;
+      bottom: 18px;
+    }
+    #slide-nav span{
+      float: left;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 8px;
+      cursor: pointer;
+    border: 2px  solid white;
+    }
+    #slide-nav  .active{
+      background-color:white;
+    }
+  </style>
+  <body>
+    <div id="slide-wrap">
+      <div id="slide-con">
+        <a href="#">
+          <img  src="images/slide-img1.jpg" alt="">
+        </a>
+        <a href="#">
+          <img  src="images/slide-img2.jpg" alt="">
+        </a>
+        <a href="#">
+          <img  src="images/slide-img3.jpg" alt="">
+        </a>
+        <a href="#">
+          <img  src="images/slide-img4.jpg" alt="">
+        </a>
+      
+      </div>
+      <a class="next-btn" href="javascript:void(0);"></a>
+      <a class="prev-btn" href="javascript:void(0);"></a>
+      <div id="slide-nav">
+
+      </div>
+    </div>
+  </body>
+</html>

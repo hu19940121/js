@@ -1,0 +1,154 @@
+
+@font-face {
+      font-family: 'iconfont';
+      src: url('../font/iconfont.eot');
+      src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+      url('../font/iconfont.woff') format('woff'),
+      url('../font/iconfont.ttf') format('truetype'),
+      url('../font/iconfont.svg#iconfont') format('svg');
+          }
+    .iconfont{
+          color: white;
+          font-family:"iconfont" !important;
+          font-size:36px;font-style:normal;
+          -webkit-font-smoothing: antialiased;
+          -webkit-text-stroke-width: 0.2px;
+          -moz-osx-font-smoothing: grayscale;
+        }
+  body{font-family: "微软雅黑"}
+  ul,body,p{margin: 0;padding: 0;}
+  #music-list li{list-style: none;}
+  .container{
+    width: 400px;
+    height:580px;
+    margin: 0 auto;
+    position: relative;
+  }
+#music-list li{height: 57px;
+              width: 100%;
+              border-bottom:1px solid #cab6b7;
+              text-indent: 10px;
+              overflow: hidden;
+              cursor: default;
+              }
+  .playing{border-left: 2px solid orange;}
+  #music-name{ margin-top: 5px;
+            font-size: 15px;
+            }
+  #singer{font-size: 12px;
+          color: #cab6b7;}
+  .control{
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+  }
+  .shade{
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    background:url(../bg.jpg) center;
+    background-size: cover;
+    -webkit-filter:blur(2px);
+  }
+  .music-pic{
+    cursor: pointer;
+    width: 68px;
+    height:68px;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  .music-pic img{width: 100%;height: 100%;}
+  .music-pic ,.music-detail, .music-button{float: left;}
+  .music-detail{margin-left: 10px;margin-top: 8px; color: white;width: 150px;}
+  .music-detail span{font-size: 14px;}
+  .music-button{float: right;
+                margin-top: 22px;
+                margin-right: 28px;}
+  #download-btn,#play-btn{display: inline-block;cursor: default;}
+  #download-btn{
+    margin-right: 30px;
+  }
+  .progressbar{
+    position: absolute;
+    height: 2px;
+    background-color: orange;
+    bottom: 80px;
+  }
+
+  .shadow,.detail-container{
+    width: 400px;
+    height:580px;
+    position: absolute;
+    top: 0;
+    color: white;
+    text-align: center;
+    display: none;
+  }
+  .songname{margin-top: 20px;}
+  .detail-container img{width: 220px;
+                        height: 220px;
+
+
+                        }
+  .shadow{
+    background: url(../bbg.jpg) center;
+    background-size: cover;
+    -webkit-filter:blur(5px);
+  }
+  .fengmian{position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            margin-top: 23px;}
+  .play-btn{position: absolute;
+        top: 84px;
+        left: 93px;
+        z-index: 100}
+  .progresswrap{
+    width: 380px;
+    margin: 0 auto;
+
+    overflow: hidden;
+    margin-top: 80px;
+  }
+  .progress{height: 3px;
+             background-color:#8e949d;
+            width: 272px;
+              margin-left: 10px;
+              margin-right: 10px;
+              margin-top: 9px;}
+   .progress-inner{height: 3px;
+             background-color:white;
+              width: 100px;
+
+             }
+  .currenttime,.progress,.alltime{float: left;display: inline-block;}
+  .downmusic{display: block;
+            width: 238px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 35px;
+            background-color: orange;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+    .goback{display: block;
+            width: 60px;
+            font-size: 36px;
+            height: 60px;
+            line-height: 60px;
+            cursor: default;
+           }
+    .circle{
+      width: 9px;
+      height:9px;
+      border-radius: 50%;
+      margin-top: -3px;
+      float: right;
+      background-color:white;
+
+    }
